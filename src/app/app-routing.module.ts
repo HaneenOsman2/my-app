@@ -7,15 +7,25 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { authGuard } from './Auth/auth.guard';
 import { ProductDetialsComponent } from './product-detials/product-detials.component';
 import { RegisterComponent } from './register/register.component';
+import { EditProductComponent } from './product-detials/edit-product/edit-product.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'signUp', pathMatch: 'full' },
-  
+
   { path: 'signUp', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  {path: 'home', canActivate: [authGuard], component: HomeComponent },
-  {path: 'product', canActivate: [authGuard],component:ProductsComponent},
-  { path: 'productDetials/:id', canActivate: [authGuard], component: ProductDetialsComponent },
+  { path: 'home', canActivate: [authGuard], component: HomeComponent },
+  { path: 'product', canActivate: [authGuard], component: ProductsComponent },
+  {
+    path: 'productDetials/:id',
+    canActivate: [authGuard],
+    component: ProductDetialsComponent,
+  },
+  {
+    path: 'productDetials/:id/edit',
+    component: EditProductComponent,
+    canActivate: [authGuard],
+  },
 
   { path: '**', component: NotfoundComponent }
 ];

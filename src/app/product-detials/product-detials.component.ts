@@ -10,23 +10,23 @@ import { product } from '../product-interface'
 })
 export class ProductDetialsComponent {
   id!: string
-  productInfo!:product
-  constructor(private activated: ActivatedRoute,private pService:ProductsService) { }
+  productInfo!: product
+  constructor(private activated: ActivatedRoute, private pService: ProductsService) { }
 
   ngOnInit(): void {
-  this.id = this.activated.snapshot.params['id']
-  this.pService.getSingleProducts(this.id).subscribe({
-    next:(res)=>{
-     this.productInfo=res
-      console.log(this.productInfo);
-      
-    },
-    
-    error:(err)=>{
-      console.log(err);
-      
-    }
-  })
+    this.id = this.activated.snapshot.params['id']
+    this.pService.getSingleProducts(this.id).subscribe({
+      next: (res) => {
+        this.productInfo = res
+        console.log(this.productInfo);
+
+      },
+
+      error: (err) => {
+        console.log(err);
+
+      }
+    })
 
   }
 

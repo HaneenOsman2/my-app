@@ -23,7 +23,7 @@ export class AuthService {
       router.navigate(['/login'])
     }else{
       this.saveData()
-      router.navigate([localStorage.getItem("currentPage")])
+      // router.navigate([localStorage.getItem("currentPage")])
     }
 
   }

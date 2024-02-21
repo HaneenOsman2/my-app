@@ -10,7 +10,7 @@
 <div class="row g-5 rowss">
 
     <div *ngFor="let p of filterdData" class="columnn col-md-3 cursor-pointer">
-        <button   class="edit btn bg-main"><i class="fa-solid fa-pen"></i></button>
+        <button (click)="navigateToEdit(p.id)"  class="edit btn bg-main"><i class="fa-solid fa-pen"></i></button>
         <div [routerLink]="['/productDetials',p.id]" class="mb-4 imagee">
             <img [src]="p.image" class="img-fluid">
         </div>

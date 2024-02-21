@@ -16,6 +16,7 @@ import { FilterComponent } from './filter/filter.component';
 import { RegisterComponent } from './register/register.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { FilteredProductComponent } from './filtered-product/filtered-product.component';
+import { EditProductComponent } from './product-detials/edit-product/edit-product.component';
 
 
 
@@ -34,6 +35,7 @@ import { FilteredProductComponent } from './filtered-product/filtered-product.co
     RegisterComponent,
     SearchBarComponent,
     FilteredProductComponent,
+    EditProductComponent,
   ],
   imports: [
     BrowserModule,
