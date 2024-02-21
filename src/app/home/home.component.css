@@ -1,0 +1,13 @@
+.text{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+
+img{
+ border-radius: 30%;
+}
+.all{
+    /* background-color: beige; */
+}

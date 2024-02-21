@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="row align-items-center">
+        <div class="col-md-4">
+            <img [src]="productInfo.image" alt="" class="img-fluid">
+        </div>
+        <div class="col-md-8 ">
+            <div>
+                <h3>{{productInfo.title}}</h3>
+                <p>{{productInfo.description}}</p>
+                <span class="text-main">{{productInfo.category}}</span>
+                <br>
+                <div class="d-flex justify-content-between">
+                    <span>Price:{{productInfo.price}}</span>
+                    <span><i class="fa-solid fa-star rating-color"></i>{{productInfo.rating.rate}}</span>
+                </div>
+                <button class="btn bg-main">Add To Cart</button>
+            </div>
+        </div>
+    </div>
+</div>

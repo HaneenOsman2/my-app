@@ -1,0 +1,149 @@
+<div class="mx-auto">
+    <h2 class="mt-5">Sign Up </h2>
+
+    <div class="row signUp">
+
+        <div class="col-md-6">
+            <img src="assets/images/login.jpeg" alt="">
+        </div>
+
+        <div class="col-md-6">
+            <div class="w-75 mx-auto">
+
+                <form (ngSubmit)="registerSubmit()" [formGroup]="registerForm">
+
+                    <!--  Name Control -->
+                    <div>
+                        <label>Name : </label>
+
+                        <input formControlName="name" class="form-control" type="text" (input)="onInputChange('name')">
+                        <div *ngIf="registerForm.get('name')?.errors&& registerForm.get('name')?.touched"
+                            class="alert alert-danger">
+                            <!-- <p *ngIf="registerForm.get('name')?.errors?.['required']">
+                                {{registerForm.get('name')?.errors?.['required']}}</p>
+
+                            <p *ngIf="registerForm.get('name')?.errors?.['length']">
+                                {{registerForm.get('name')?.errors?.['length']}}</p> -->
+                            <!-- <p *ngIf="customValidator('name')">Minnmum 4 character</p> -->
+                            <!-- <p>{{values}}</p> -->
+
+                            <p *ngFor="let error of registerForm.get('name')?.errors | keyvalue">
+                                {{error.value}}
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <!--  Email Control -->
+                    <div>
+                        <label for="">Email : </label>
+
+                        <input formControlName="email" class="form-control my-3" type="email"
+                            (input)="onInputChange('email')">
+                        <div *ngIf="registerForm.get('email')?.errors && registerForm.get('email')?.touched"
+                            class="alert alert-danger">
+                            <!-- <p
+                                *ngIf="registerForm.get('email')?.errors?.['required']||registerForm.get('email')?.errors?.['invalid']">
+                                {{registerForm.get('email')?.errors?.['required']||registerForm.get('email')?.errors?.['invalid']}}
+                            </p> -->
+                            <p *ngFor="let error of registerForm.get('email')?.errors | keyvalue">
+                                {{error.value}}
+                            </p>
+
+                        </div>
+                    </div>
+
+                    <!--  Password Control -->
+                    <div>
+                        <label for="">Password : </label>
+
+                        <div class="passwords-container ">
+                            <input [type]="show ? 'text':'password'" formControlName="password" class="form-control"
+                                (input)="onInputChange('password')">
+                            <i class="eyeIcon" [class]="show? 'fa-solid fa-eye':'fa-solid fa-eye-slash'"
+                                (click)="showOrHidePassword()"></i>
+                        </div>
+
+
+                        <div *ngIf="registerForm.get('password')?.errors && registerForm.get('password')?.touched"
+                            class="alert alert-danger">
+                            <!-- <p
+                                *ngIf="registerForm.get('password')?.errors?.['required']||registerForm.get('password')?.errors?.['invalid']">
+                                {{registerForm.get('password')?.errors?.['required']||registerForm.get('password')?.errors?.['invalid']}}
+                            </p> -->
+                            <!-- <p *ngIf="registerForm.get('password')?.errors?.['required']">password must be Required</p>
+                            <p *ngIf="registerForm.get('password')?.errors?.['pattern']">Please Enter Valid Password
+                            </p> -->
+                            <p *ngFor="let error of registerForm.get('password')?.errors | keyvalue">
+                                {{error.value}}
+                            </p>
+                        </div>
+                    </div>
+
+                    <!--  Confirm Password Control -->
+                    <div>
+                        <label for="">Confirm Password : </label>
+
+                        <div class="passwords-container">
+                            <input [type]="show ? 'text':'password'" formControlName="confirmPassword"
+                                class="form-control" (input)="onInputChange('confirmPassword')">
+                            <i class="eyeIcon" [class]="show? 'fa-solid fa-eye':'fa-solid fa-eye-slash'"
+                                (click)="showOrHidePassword()"></i>
+                        </div>
+
+
+                        <div *ngIf="registerForm.get('confirmPassword')?.errors && registerForm.get('confirmPassword')?.touched"
+                            class="alert alert-danger">
+                            <!-- <p
+                                *ngIf="registerForm.get('confirmPassword')?.errors?.['required']||registerForm.get('confirmPassword')?.errors?.['invalid']">
+                                {{registerForm.get('confirmPassword')?.errors?.['required']||registerForm.get('confirmPassword')?.errors?.['invalid']}}
+                            </p> -->
+                            <!-- <p *ngIf="registerForm.get('confirmPassword')?.errors?.['required']">confirmPassword must be
+                                Required
+                            </p>
+                            <p *ngIf="registerForm.get('confirmPassword')?.errors?.['pattern']">Please Enter Valid
+                                confirmPassword
+                            </p> -->
+                            <p *ngFor="let error of registerForm.get('confirmPassword')?.errors | keyvalue">
+                                {{error.value}} 
+                            </p>
+                        </div>
+                        <p *ngIf="registerForm.errors&&registerForm.get('confirmPassword')?.dirty"
+                            class="alert alert-danger my-3">
+                            Passwords not matched</p>
+
+                    </div>
+
+                    <!--  Phone Number Control -->
+                    <div>
+                        <label for="">Phone : </label>
+
+                        <input formControlName="phone" class="form-control" type="tel">
+
+                        <div *ngIf="registerForm.get('phone')?.errors && registerForm.get('phone')?.touched"
+                            class="alert alert-danger">
+                            <!-- <p
+                                *ngIf="registerForm.get('phone')?.errors?.['required']||registerForm.get('phone')?.errors?.['invalid']">
+                                {{registerForm.get('phone')?.errors?.['required']||registerForm.get('phone')?.errors?.['invalid']}}
+                            </p> -->
+                            <!-- <p *ngIf="registerForm.get('phone')?.errors?.['required']">phone must be Required
+                            </p>
+                            <p *ngIf="registerForm.get('phone')?.errors?.['pattern']">Please Enter Valid phone
+                            </p> -->
+
+                            <p *ngFor="let error of registerForm.get('phone')?.errors | keyvalue">
+                                {{error.value}} 
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <button [disabled]="registerForm.invalid" type="submit"
+                        class="btn bg-main text-white ms-auto d-block my-3">
+                        SignUp </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

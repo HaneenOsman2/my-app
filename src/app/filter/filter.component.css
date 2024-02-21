@@ -1,0 +1,22 @@
+.container {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: center;
+}
+
+span {
+    cursor: pointer;
+    padding: 5px;
+    font-size: 20px;
+    transition: .05s;
+}
+
+.category:hover {
+    border-bottom: 3px solid rgb(34, 144, 208);
+    color: rgb(63, 205, 237);
+    font-size: 19px;
+    transition: .08s;
+
+}

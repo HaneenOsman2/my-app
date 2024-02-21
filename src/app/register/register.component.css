@@ -1,0 +1,18 @@
+.passwords-container{
+    position: relative;
+}
+
+.eyeIcon{
+    position: relative;
+    /* background-color: red; */
+    left: 94%;
+    bottom: 33px;
+    font-size: 12px;
+}
+
+img{
+    max-width: 100%;
+} 
+.signUp{
+    max-height: 100vh;
+}

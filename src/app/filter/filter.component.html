@@ -1,0 +1,4 @@
+<div class="container text-center my-5">
+    <!-- <span class="category" (click)="change($event)" [id]="selectedValue">All</span> -->
+    <span *ngFor="let category of data" class="category" (click)="change($event)" [id]="data">{{category}}</span>
+</div>
