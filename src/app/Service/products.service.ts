@@ -14,7 +14,7 @@ export class ProductsService {
 
 
   constructor(private httpClient: HttpClient) { }
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   getAllProducts(): Observable<any> {
     return this.httpClient.get(this.baseUrl + "/products")
@@ -44,7 +44,8 @@ export class ProductsService {
     return this.httpClient.get(this.baseUrl + `/products/category/${categoryId}`);
 
   }
-  updateProduct(id: any,updateProduct:product ): any {
-    return this.httpClient.put(this.baseUrl + `/products/${id}` ,updateProduct)
+  updateProduct(updateProduct: product): any {
+    return this.httpClient.put(this.baseUrl + `/products/${updateProduct.id}`, updateProduct)
   }
+  
 }

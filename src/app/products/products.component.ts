@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { ProductsService } from '../Service/products.service';
 import { product } from '../product-interface'
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -12,17 +13,19 @@ export class ProductsComponent {
   categories!: any;
   loader: boolean = false
   searchText: string = '';
-  data:product[]=[]
-  filterdData:any;
-  title='appnew'
-  isEditing:boolean=false;
-  product:product;
-  categoriesEdit:string[];
+  data: product[] = []
+  filterdData: any;
+  title = 'appnew'
+  isEditing: boolean = false;
+  product: product;
+  edit: any
+  id!: string
 
-  constructor(private productService: ProductsService) {
-   }
+  constructor(private activated: ActivatedRoute, private productService: ProductsService) {
+  }
 
   ngOnInit(): void {
+    this.id = this.activated.snapshot.params['id']
     localStorage.setItem("currentPage", '/home');
 
     this.productService.getAllProducts().subscribe({
@@ -51,9 +54,9 @@ export class ProductsComponent {
       }
     })
 
-    this.productService.getAllProducts().subscribe(res=>{
-      this.data=res as product[]
-      this.filterdData=this.data
+    this.productService.getAllProducts().subscribe(res => {
+      this.data = res as product[]
+      this.filterdData = this.data
     })
 
   }
@@ -77,11 +80,17 @@ export class ProductsComponent {
   }
 
   onSearchTextChanged(event: any) {
-    this.filterdData = this.data.filter(el=>el.title.toLowerCase().includes(event.toLowerCase()));    
+    this.filterdData = this.data.filter(el => el.title.toLowerCase().includes(event.toLowerCase()));
   }
 
-  toggleEdit(){
-    this.isEditing=!this.isEditing
+  onSubmit() {
+    this.productService.updateProduct(this.product).subscribe(
+      res => {
+        console.log(res);
+
+      }
+    )
+    console.log(this.productService.updateProduct(this.product));
   }
 
 }
