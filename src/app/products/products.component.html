@@ -1,34 +1,45 @@
 <div class="container">
+    <div class="">
 
-    <app-search-bar (searchTextChanged)="onSearchTextChanged($event )"></app-search-bar>
-
-    <app-filter [data]="categories" (selected)="selectedCategories($event)"></app-filter>
-</div>
-
-
-
-<div class="row g-5 rowss">
-
-    <div *ngFor="let p of filterdData" class="columnn col-md-3 cursor-pointer">
-        <button (click)="onSubmit()"  class="edit btn bg-main"><i class="fa-solid fa-pen"></i></button>
-        <div [routerLink]="['/productDetials',p.id]" class="mb-4 imagee">
-            <img [src]="p.image" class="img-fluid">
-        </div>
-
-        <div class="AllContent">
-            
-            <div class="description">
-                <p *ngIf="!isEditing" class="text-main font-sm ">{{p.category}}</p>
-                <p class="descCategory">{{p.title}}</p>
-
-                <div class="d-flex justify-content-between">
-                    <span>{{p.price}}</span>
-                    <span><i class="fa-solid fa-star rating-color"></i>{{p.rating.rate}}</span>
-                </div>
-            </div>
-            <button class="btn bg-main">Add To Cart</button>
-        </div>
-
-
+        <app-search-bar (searchTextChanged)="onSearchTextChanged($event )"></app-search-bar>
+    
+        <app-filter [data]="categories" (selected)="selectedCategories($event)"></app-filter>
     </div>
+    
+    
+    
+    <div class="row g-5 products-container">
+    
+        <div *ngFor="let p of filterdData" class="columnn col-md-3 cursor-pointer">
+            <button (click)="onEditProduct(p.id)"  class="edit btn bg-main"><i class="fa-solid fa-pen"></i></button>
+            <div [routerLink]="['/productDetials',p.id]" class="mb-4 imagee">
+                <img [src]="p.image" class="img-fluid">
+            </div>
+    
+            <div class="AllContent">
+                
+                <div class="description">
+                    <p *ngIf="!isEditing" class="text-main font-sm ">{{p.category}}</p>
+                    <p class="descCategory">{{p.title}}</p>
+    
+                    <div class="d-flex justify-content-between">
+                        <span>{{p.price}}</span>
+                        <span><i class="fa-solid fa-star rating-color"></i>{{p.rating.rate}}</span>
+                    </div>
+                </div>
+                <button class="btn bg-main">Add To Cart</button>
+            </div>
+    
+            <!-- Edit Component -->
+            
+        </div>
+        <app-edit-product 
+                *ngIf="choosenProduct" 
+                [product]="choosenProduct"
+                [visible]="editCardVisible"
+                (outVisible)="editCardVisible = $event"
+            />
+    </div>
+    
+    
 </div>

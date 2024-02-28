@@ -21,12 +21,16 @@ export class ProductsComponent {
   edit: any
   id!: string
 
+  choosenProduct: product;
+  editCardVisible: boolean = false
+
   constructor(private activated: ActivatedRoute, private productService: ProductsService) {
   }
 
+
   ngOnInit(): void {
     this.id = this.activated.snapshot.params['id']
-    localStorage.setItem("currentPage", '/home');
+    localStorage.setItem("currentPage", '/product');
 
     this.productService.getAllProducts().subscribe({
 
@@ -50,7 +54,6 @@ export class ProductsComponent {
       },
       error: (err) => {
         console.log(err);
-
       }
     })
 
@@ -83,14 +86,19 @@ export class ProductsComponent {
     this.filterdData = this.data.filter(el => el.title.toLowerCase().includes(event.toLowerCase()));
   }
 
-  onSubmit() {
-    this.productService.updateProduct(this.product).subscribe(
-      res => {
-        console.log(res);
+  onEditProduct(id: any) {
 
-      }
-    )
-    console.log(this.productService.updateProduct(this.product));
+
+    // Get the ID of the element 
+    console.log('edited' + id);
+
+    // Fetch Product with the specific ID
+    this.productService.getSingleProducts(id).subscribe((res) => {
+      console.log(res);
+      this.choosenProduct = res as product
+      this.editCardVisible = true
+      
+    })
+    
   }
-
 }

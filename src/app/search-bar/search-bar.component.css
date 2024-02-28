@@ -1,11 +1,16 @@
 
-i{
+
+i {
     position: relative;
-    bottom: 30px;
-    right: 18px;
+    right: 40px;
 }
 
 .search{
+    margin: 2rem 0;
     position: relative;
-    left: 25%;
+    max-width: 1500px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
